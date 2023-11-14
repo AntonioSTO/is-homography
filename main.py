@@ -1,5 +1,5 @@
 from normDLT import my_homography
-
+from ransac import Ransac
 import numpy as np
 import cv2 as cv
 from matplotlib import pyplot as plt
@@ -59,8 +59,8 @@ if len(good)>MIN_MATCH_COUNT:
     #####################################################
     # Substitute OpenCv function for your homography function
 
-    # M, mask = cv.findHomography(src_pts, dst_pts, cv.RANSAC,5.0)
-    M = my_homography(src_pts, dst_pts)
+    new_ransac = Ransac(4,100,10)
+    M = new_ransac.ransac(src_pts, dst_pts)[0]
     #####################################################
 
     img4 = cv.warpPerspective(img1, M, (img1.shape[1],img1.shape[0])) #, None) #, flags[, borderMode[, borderValue]]]]	)
