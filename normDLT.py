@@ -16,8 +16,6 @@ def my_DLT(pts1,pts2):
     else:
       A = np.vstack((A,Ai))
 
-  print(A)
-
   U,S,Vt = np.linalg.svd(A)
 
   h = Vt[-1]
@@ -50,6 +48,5 @@ def my_homography(pts1,pts2):
   H_normalized = my_DLT(norm_pts1, norm_pts2)
 
   H = np.dot(np.linalg.inv(T2), np.dot(H_normalized, T1))
-
 
   return H

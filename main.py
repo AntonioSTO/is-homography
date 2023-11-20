@@ -3,7 +3,7 @@ from ransac import Ransac
 import numpy as np
 import cv2 as cv
 from matplotlib import pyplot as plt
-import imutils
+
 
 
 
@@ -59,7 +59,7 @@ if len(good)>MIN_MATCH_COUNT:
     #####################################################
     # Substitute OpenCv function for your homography function
 
-    new_ransac = Ransac(4,100,10)
+    new_ransac = Ransac(4,1000,10)
     M = new_ransac.ransac(src_pts, dst_pts)[0]
     #####################################################
 
