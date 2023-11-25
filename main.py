@@ -63,7 +63,7 @@ if len(good)>MIN_MATCH_COUNT:
     M = new_ransac.ransac(src_pts, dst_pts)[0]
     #####################################################
 
-    img4 = cv.warpPerspective(img1, M, (img1.shape[1],img1.shape[0])) #, None) #, flags[, borderMode[, borderValue]]]]	)
+    img4 = cv.warpPerspective(img1, M, (img2.shape[1],img2.shape[0])) #, None) #, flags[, borderMode[, borderValue]]]]	)
 
 
 matchesMask = None
@@ -74,7 +74,6 @@ draw_params = dict(matchColor = (0,255,0), # draw matches in green color
 img3 = cv.drawMatches(img1,kp1,img2,kp2,good,None,**draw_params)
 
 
-fig = plt.figure()
 fig, axs = plt.subplots(2,2,figsize=(30,15))
 ax1 = fig.add_subplot(2,2,1)
 plt.imshow(img3, 'gray')

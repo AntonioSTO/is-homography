@@ -38,8 +38,8 @@ class Ransac():
             i += 1
 
         H_final = normDLT.my_homography(best_pts1_in, best_pts2_in)
-        print(max_inliers)
-        print(i)
+        print('Inliers: ',max_inliers)
+        print('Iterações: ',i)
 
         return H_final, best_pts1_in, best_pts2_in
 
@@ -59,8 +59,6 @@ class Ransac():
     def update_N(self,pts1,pts2):
         e = 1 - (np.sum(self.inliers)/len(pts1))
         N = (np.log(1-0.99)//np.log(1-((1-e)**4))) + 1
-
-        #print(N)
 
         return N
     
